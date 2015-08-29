@@ -1,5 +1,5 @@
  # README.md
- # File: explains how all of the scripts work and how they are connected
+ ### File: explains how all of the scripts work and how they are connected
  
  
  # Create a temp. file name (eg tempfile())
