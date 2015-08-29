@@ -10,11 +10,11 @@
  
  >download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",tmp)
  
- #### trying URL 'https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip'
-#### Content type 'application/zip' length 62556944 bytes (59.7 MB)
-#### downloaded 59.7 MB
+######### trying URL 'https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip'
+########## Content type 'application/zip' length 62556944 bytes (59.7 MB)
+###### downloaded 59.7 MB
 
-> unzip(tmp,list = TRUE)
+>unzip(tmp,list = TRUE)
                                                            Name   Length                Date
 1                           UCI HAR Dataset/activity_labels.txt       80 2012-10-10 15:55:00
 2                                  UCI HAR Dataset/features.txt    15785 2012-10-11 13:41:00
