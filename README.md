@@ -16,7 +16,8 @@
 
 >unzip(tmp,list = TRUE)
 
-Name   Length                Date
+#### Name   Length                Date
+
 1. UCI HAR Dataset/activity_labels.txt       80 2012-10-10 15:55:00
 2. UCI HAR Dataset/features.txt    15785 2012-10-11 13:41:00
 3.                            UCI HAR Dataset/features_info.txt     2809 2012-10-15 15:44:00
@@ -50,7 +51,7 @@ Name   Length                Date
 31                            UCI HAR Dataset/train/X_train.txt 66006256 2012-11-29 15:25:00
 32                            UCI HAR Dataset/train/y_train.txt    14704 2012-11-29 15:09:00
  
- # Use unz() to extract the target file from temp. file
+### Use unz() to extract the target file from temp. file
  
  data.X_test <- read.table(unz(tmp, "UCI HAR Dataset/test/X_test.txt"),sep="", header=FALSE)
  data.Y_test <- read.table(unz(tmp, "UCI HAR Dataset/test/y_test.txt"),sep="", header=FALSE)
