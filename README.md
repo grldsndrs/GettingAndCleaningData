@@ -16,7 +16,7 @@
 
 >unzip(tmp,list = TRUE)
 
-###                                                           Name   Length                Date
+######                                                           Name   Length                Date
 1. UCI HAR Dataset/activity_labels.txt       80 2012-10-10 15:55:00
 
 2. UCI HAR Dataset/features.txt    15785 2012-10-11 13:41:00
@@ -39,71 +39,66 @@
 
 32. UCI HAR Dataset/train/y_train.txt    14704 2012-11-29 15:09:00
  
-### Use unz() to extract the target file from temp. file
+###### Use unz() to extract the target file from temp. file
  
- data.X_test <- read.table(unz(tmp, "UCI HAR Dataset/test/X_test.txt"),sep="", header=FALSE)
- data.Y_test <- read.table(unz(tmp, "UCI HAR Dataset/test/y_test.txt"),sep="", header=FALSE)
- data.X_train <- read.table(unz(tmp, "UCI HAR Dataset/train/X_train.txt"),sep="", header=FALSE)
- data.Y_train <- read.table(unz(tmp, "UCI HAR Dataset/train/y_train.txt"),sep="", header=FALSE)
- descriptiveActivityNames <- read.table(unz(tmp, "UCI HAR Dataset/activity_labels.txt"),sep="", header=FALSE)
- descriptiveVariableNames <- read.table(unz(tmp, "UCI HAR Dataset/features.txt"),sep="", header=FALSE)
- subject_test <- read.table(unz(tmp, "UCI HAR Dataset/test/subject_test.txt"),sep="", header=FALSE)
- subject_train <- read.table(unz(tmp, "UCI HAR Dataset/train/subject_train.txt"),sep="", header=FALSE)
- 
- 
- # Add a column to the X's t distiguish between test
- # and training sets in the merged data
- 
- library(dplyr)
- data.X_test <- mutate(data.X_test, Set = factor("test"))
- data.X_train <- mutate(data.X_train, Set = factor("train"))
- 
- # Bind the two Data Set together by stacking one on the other
- 
- boundDataX <- rbind(data.X_test, data.X_train)
- boundDataY <- rbind(data.Y_test, data.Y_train)
+ >data.X_test <- read.table(unz(tmp, "UCI HAR Dataset/test/X_test.txt"),sep="", header=FALSE)
+ >data.Y_test <- read.table(unz(tmp, "UCI HAR Dataset/test/y_test.txt"),sep="", header=FALSE)
+ >data.X_train <- read.table(unz(tmp, "UCI HAR Dataset/train/X_train.txt"),sep="", header=FALSE)
+ >data.Y_train <- read.table(unz(tmp, "UCI HAR Dataset/train/y_train.txt"),sep="", header=FALSE)
+ >descriptiveActivityNames <- read.table(unz(tmp, "UCI HAR Dataset/activity_labels.txt"),sep="", header=FALSE)
+ >descriptiveVariableNames <- read.table(unz(tmp, "UCI HAR Dataset/features.txt"),sep="", header=FALSE)
+ >subject_test <- read.table(unz(tmp, "UCI HAR Dataset/test/subject_test.txt"),sep="", header=FALSE)
+ >subject_train <- read.table(unz(tmp, "UCI HAR Dataset/train/subject_train.txt"),sep="", header=FALSE)
  
  
- # Append the combined Y data to the X DataSet as an
- # addtional column and name it activity
+ ###### Add a column to the X's t distiguish between test and training sets in the merged data
  
- boundDataX[["activity"]] <- boundDataY[,1]
+ >library(dplyr)
+ >data.X_test <- mutate(data.X_test, Set = factor("test"))
+ >data.X_train <- mutate(data.X_train, Set = factor("train"))
  
- # Append an additional column of activity names to
- # facilitate tidying the Dataset
+ ###### Bind the two Data Set together by stacking one on the other
  
- boundDataX$activityName <- factor(boundDataX$activity,
-+                     levels = descriptiveActivityNames[[1]],
-+                     labels = descriptiveActivityNames[[2]])
+ >boundDataX <- rbind(data.X_test, data.X_train)
+ >boundDataY <- rbind(data.Y_test, data.Y_train)
  
- # The newly boundDataX now has columns with "variables"
- # i.e. the codes for walking, sitting etc
- # I spread the appended Y column over 6 columns by the factor levels asigned
- # in the previous step This tidys up the data
- # so that each column/variable contains all values that
- # measure the same underlying attribute.
  
- library(tidyr)
- spreadDataX <- spread(data = boundDataX, key = activityName,value = activity)
+ ###### Append the combined Y data to the X DataSet as an addtional column and name it activity
  
- # Note that the spread functions argument. The key values neccesitate
- # the addition of the activityName variable
+ >boundDataX[["activity"]] <- boundDataY[,1]
  
- # Use the naming conventions set forth in the features.txt file
- # after a few adjustments
+ ###### Append an additional column of activity names to  facilitate tidying the Dataset
  
- # Add the index of the name to distinguish from duplicates in the list
+ >boundDataX$activityName <- factor(boundDataX$activity,
+>+                     levels = descriptiveActivityNames[[1]],
+>+                     labels = descriptiveActivityNames[[2]])
  
- s <-
-+   mapply(paste,  descriptiveVariableNames[[2]],descriptiveVariableNames[[1]],sep="__" )
+ .. The newly boundDataX now has columns with "variables"
+ .. i.e. the codes for walking, sitting etc
+ .. I spread the appended Y column over 6 columns by the factor levels asigned
+ .. in the previous step This tidys up the data
+ .. so that each column/variable contains all values that
+ .. measure the same underlying attribute.
  
- # Remove '()' and then all of the special charcters to avoid conflicts
- t<-gsub('\\()',"",s)
+ >library(tidyr)
+ >spreadDataX <- spread(data = boundDataX, key = activityName,value = activity)
  
- # Remove right parenthesis replace with double period
- u<-gsub('\\(',"..",t)
+ ###### Note that the spread functions argument. The key values neccesitate the addition of the activityName variable
  
- # Remove left Parenthesis replace with double period
+ ###### Use the naming conventions set forth in the features.txt file after a few adjustments
+ 
+ ###### Add the index of the name to distinguish from duplicates in the list
+ 
+>s <-
+>+   mapply(paste,  descriptiveVariableNames[[2]],descriptiveVariableNames[[1]],sep="__" )
+ 
+ ###### Remove '()' and then all of the special charcters to avoid conflicts
+ >t<-gsub('\\()',"",s)
+ 
+ ###### Remove right parenthesis replace with double period
+ >u<-gsub('\\(',"..",t)
+ 
+ ###### Remove left Parenthesis replace with double period
  v<-gsub('\\)',"..",u)
  
  # Remove dash replace with period
