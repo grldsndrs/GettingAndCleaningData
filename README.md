@@ -16,8 +16,9 @@
 
 >unzip(tmp,list = TRUE)
 
-######                                                            Name   Length                Date
-###### 1                           UCI HAR Dataset/activity_labels.txt       80 2012-10-10 15:55:00
+|Name   |Length                |Date|
+|-------------------------------------------------------------:|:------:|:-----------------:|
+|1      |       |             UCI HAR Dataset/activity_labels.txt       80 2012-10-10 15:55:00
 ###### 2                                  UCI HAR Dataset/features.txt    15785 2012-10-11 13:41:00
 3                             UCI HAR Dataset/features_info.txt     2809 2012-10-15 15:44:00
 4                                    UCI HAR Dataset/README.txt     4453 2012-12-10 10:38:00
