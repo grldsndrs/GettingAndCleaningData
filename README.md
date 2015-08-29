@@ -15,19 +15,28 @@
 ###### downloaded 59.7 MB
 
 >unzip(tmp,list = TRUE)
-#
-                                                           Name   Length                Date
+
+###                                                           Name   Length                Date
 1                           UCI HAR Dataset/activity_labels.txt       80 2012-10-10 15:55:00
+
 2                                  UCI HAR Dataset/features.txt    15785 2012-10-11 13:41:00
+
 3                             UCI HAR Dataset/features_info.txt     2809 2012-10-15 15:44:00
+
 4                                    UCI HAR Dataset/README.txt     4453 2012-12-10 10:38:00
 
+
 16                        UCI HAR Dataset/test/subject_test.txt     7934 2012-11-29 15:09:00
+
 17                              UCI HAR Dataset/test/X_test.txt 26458166 2012-11-29 15:25:00
+
 18                              UCI HAR Dataset/test/y_test.txt     5894 2012-11-29 15:09:00
 
-30                      UCI HAR Dataset/train/subject_train.txt    20152 2012-11-29 15:09:00
+
+30                      UCI HAR Dataset/train/subject_train.txt    20152 2012-11-29 15:09:
+
 31                            UCI HAR Dataset/train/X_train.txt 66006256 2012-11-29 15:25:00
+
 32                            UCI HAR Dataset/train/y_train.txt    14704 2012-11-29 15:09:00
  
 ### Use unz() to extract the target file from temp. file
